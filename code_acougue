@@ -1,0 +1,64 @@
+CREATE DATABASE Acougue;
+USE Acougue;
+
+
+CREATE TABLE vendas (
+ 	idVenda INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+ 	valorTotal INT NOT NULL,
+ 	dataHora DATETIME NOT NULL DEFAULT NOW()
+	);
+
+CREATE TABLE produtos (
+	idProduto INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	valor INT NOT NULL,
+	nome VARCHAR(30) NOT NULL
+	);
+
+CREATE TABLE item (
+	idItem INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	valorUnitario INT NOT NULL,
+	quantidade INT NOT NULL,
+	idVenda INT NOT NULL,
+	idProduto INT NOT NULL,
+	FOREIGN KEY (idVenda) REFERENCES vendas(idVenda),
+	FOREIGN KEY (idProduto) REFERENCES produto(idProduto)
+	);
+
+
+INSERT INTO vendas VALUES
+	(NULL,'200','2025-05-10 09:35:00');
+
+INSERT INTO vendas VALUES
+	(NULL,'30','2025-05-10 09:40:00');
+
+
+INSERT INTO produtos VALUES
+	(NULL,'50','bovino');
+
+INSERT INTO produtos VALUES
+	(NULL,'100','aves');
+
+INSERT INTO produtos VALUES
+	(NULL,'50','peixe');
+
+INSERT INTO produtos VALUES
+	(NULL,'20','carne_moida');
+
+INSERT INTO produtos VALUES
+	(NULL,'30','coxinha');
+
+
+INSERT INTO item VALUES
+	(NULL,'5','10','1','1');
+
+INSERT INTO item VALUES
+	(NULL,'10','10','1','2');
+
+INSERT INTO item VALUES
+	(NULL,'5','10','1','3');
+
+INSERT INTO item VALUES
+	(NULL,'2','10','2','4');
+
+INSERT INTO item VALUES
+	(NULL,'3','10','2','5');
